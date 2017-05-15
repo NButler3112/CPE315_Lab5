@@ -12,6 +12,7 @@
 #include <string.h>
 
 #include "mips_asm_header.h"
+#include "Lab5.h"
 
 
 typedef unsigned int MIPS, *MIPS_PTR;
@@ -19,7 +20,7 @@ typedef unsigned int MIPS, *MIPS_PTR;
 MB_HDR mb_hdr;		/* Header area */
 MIPS mem[1024];		/* Room for 4K bytes */
 
-main()
+int main(void)
   {
   FILE *fd;
   int n;
@@ -57,9 +58,10 @@ main()
 /* ok, now dump out the instructions loaded: */
 
   for (i = 0; i<memp; i+=4)	/* i contains byte offset addresses */
-     {
-     printf("Instruction@%08X : %08X\n", i, mem[i/4]);
-     }
+  {
+      printf("Instruction@%08X : %08X\n", i, mem[i/4]);
+      mainDecoder(mem[i/4]);
+  }
   printf("\n");
 
   exit(0);

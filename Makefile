@@ -8,7 +8,7 @@ all : $(MAIN)
 $(MAIN) : $(OBJS)
 	$(CC) $(CFLAGS) -o $(MAIN) $(OBJS)
 
-Lab5.o : Lab5.c
+Lab5.o : Lab5.c Lab5.h
 	$(CC) $(CFLAGS) -c Lab5.c
 
 load_testcase.o : load_testcase.c mips_asm_header.h

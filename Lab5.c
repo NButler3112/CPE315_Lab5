@@ -3,26 +3,35 @@
 #include <string.h>
 #include "mips_asm_header.h"
 
-void printer(char c)
+static unsigned int findInstruc(unsigned int opcode)
 {
-   switch(c)
+   if (opcode == 0x00)
    {
-      case 'r':
-         break;
-
-      case 'i':
-         break;
-
-      case 'j':
-         break;
-
-      default:
-         printf("Invalid instruction\n");
-         break;
+      return 0;   /*Indicates R type instruction*/
+   }
+   else if (opcode == 0x02 || opcode == 0x03)
+   {
+      return 2;   /*Indicates J type instruction*/
+   }
+   else if (opcode == 0x04 || opcode == 0x05 || opcode == 0x08 || opcode == 0x09\
+      || opcode == 0x0A || opcode == 0x0B || opcode == 0x0C || opcode == 0x0D\
+      || opcode == 0x0E || opcode == 0x0F || opcode == 0x20 || opcode == 0x21\
+      || opcode == 0x23 || opcode == 0x24 || opcode == 0x25 || opcode == 0x28\
+      || opcode == 0x29 || opcode == 0x2B)
+   {
+      return 1;   /*Indicates I type instruction*/
+   }
+   else
+   {
+      return -1;  /*Indicates invalid type instruction*/
    }
 }
 
-void mainDecoder(mem m)
+void mainDecoder(unsigned int m)
 {
-   
+   unsigned int opcode, mask = 0xFC000000;
+   opcode = m & mask;
+
+   opcode = findInstruc(opcode);
+   printf("%u\n", opcode);
 }
