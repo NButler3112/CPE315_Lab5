@@ -21,3 +21,8 @@ void printer(char c)
          break;
    }
 }
+
+void mainDecoder(mem m)
+{
+   
+}
