@@ -60,7 +60,7 @@ int main(void)
   for (i = 0; i<memp; i+=4)	/* i contains byte offset addresses */
   {
       printf("Instruction@%08X : %08X\n", i, mem[i/4]);
-      mainDecoder(mem[i/4]);
+      mainDecoder(i, mem[i/4]);
   }
   printf("\n");
 
