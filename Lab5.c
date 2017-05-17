@@ -129,7 +129,7 @@ static unsigned int findInstruc(unsigned int opcode)
    }
 }
 
-static int rType(unsigned int instr, unsigned int opcode)
+static void rType(unsigned int instr, unsigned int opcode)
 {
    unsigned int rs, rt, rd, shamt, funct;
    rs = instr & 0x03E00000;
@@ -163,7 +163,6 @@ static int rType(unsigned int instr, unsigned int opcode)
       printf("%s is shifted by bits indicated in register %s and stored in %s\n",\
          regs[rt], regs[rs], regs[rd]);
    }
-   return 1;
 }
 
 static unsigned int branchAddr(unsigned int immed)
